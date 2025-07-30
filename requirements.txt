@@ -1,11 +1,20 @@
+#streamlit
+#torch
+#transformers
+#peft
+#bitsandbytes
+#datasets
+#huggingface_hub
+#GPUtil
+#accelerate
+#sentencepiece
+#sentencepiece --prefer-binary
+
+
 streamlit
 torch
 transformers
 peft
 bitsandbytes
-datasets
-huggingface_hub
-GPUtil
-accelerate
-#sentencepiece
 sentencepiece --prefer-binary
+python-dotenv
