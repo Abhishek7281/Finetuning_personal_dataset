@@ -2,6 +2,8 @@ import streamlit as st
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, LlamaTokenizer
 from peft import PeftModel
+import os
+hf_token = os.getenv("HF_TOKEN")
 
 @st.cache_resource(show_spinner=True)
 def load_model():
@@ -14,14 +16,14 @@ def load_model():
         bnb_4bit_compute_dtype=torch.bfloat16
     )
     
-    tokenizer = LlamaTokenizer.from_pretrained(base_model_id, use_fast=False, trust_remote_code=True, add_eos_token=True)
+    tokenizer = LlamaTokenizer.from_pretrained(base_model_id, use_fast=False, trust_remote_code=True, add_eos_token=True, token=hf_token)
     
     base_model = AutoModelForCausalLM.from_pretrained(
         base_model_id,
         quantization_config=nf4Config,
         device_map="auto",
         trust_remote_code=True,
-        use_auth_token=True
+        use_auth_token=True, token=hf_token
     )
     
     model_finetuned = PeftModel.from_pretrained(base_model, "checkpoint-20")
