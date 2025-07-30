@@ -24,7 +24,7 @@ def load_model():
         use_auth_token=True
     )
     
-    model_finetuned = PeftModel.from_pretrained(base_model, "finetunedModel/checkpoint-20")
+    model_finetuned = PeftModel.from_pretrained(base_model, "checkpoint-20")
     model_finetuned.eval()
     
     return tokenizer, model_finetuned
