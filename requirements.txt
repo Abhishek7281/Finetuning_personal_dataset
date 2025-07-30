@@ -7,4 +7,5 @@ datasets
 huggingface_hub
 GPUtil
 accelerate
-sentencepiece
+#sentencepiece
+sentencepiece --prefer-binary
